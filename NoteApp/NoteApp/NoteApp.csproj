@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>4796861e-6c92-44fd-8dcc-0bc6ead3aa6b</ProjectGuid>
+    <ProjectGuid>1b7376a1-9360-4294-9751-bbb33c2d6a4f</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NoteApp</RootNamespace>
