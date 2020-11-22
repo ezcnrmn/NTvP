@@ -18,17 +18,12 @@ namespace NoteApp
         /// Имя файла для сериализации и десериализации
         /// Закрытая константа
         /// </summary>
-        private const string FileName = "NoteApp.notes";
+        private const string fileName = "NoteApp.notes";
 
         /// <summary>
         /// Путь до папки сохранения
         /// </summary>
-        public static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/NoteApp/";
-
-        /// <summary>
-        /// Полный путь до файла
-        /// </summary>
-        private static string pathToFile = folderPath + FileName;
+        public static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/NoteApp/";
 
         /// <summary>
         /// Сериализация данных
@@ -43,7 +38,7 @@ namespace NoteApp
             }
             JsonSerializer serializer = new JsonSerializer();
 
-            using (StreamWriter sw = new StreamWriter(pathToFile))
+            using (StreamWriter sw = new StreamWriter(folderPath + fileName))
             using (JsonTextWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, project);

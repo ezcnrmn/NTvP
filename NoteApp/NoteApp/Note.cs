@@ -59,7 +59,7 @@ namespace NoteApp
                     }
                     else
                     {
-                        _name = "Без названия";
+                        _name = "Untitled";
                     }
                     EditingTime = DateTime.Now;
                 }
