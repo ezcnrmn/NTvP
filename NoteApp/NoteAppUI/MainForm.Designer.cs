@@ -72,7 +72,7 @@
             this.categoryComboBox.FormattingEnabled = true;
             this.categoryComboBox.Location = new System.Drawing.Point(77, 35);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(154, 21);
+            this.categoryComboBox.Size = new System.Drawing.Size(103, 21);
             this.categoryComboBox.TabIndex = 3;
             this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 

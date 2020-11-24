@@ -43,9 +43,7 @@ namespace NoteAppUI
             Note Note = new Note();
             Note.Name = nameTextBox.Text;
             Note.Content = contentTextBox.Text;
-            NoteCategory selectedNoteCategory;
-            selectedNoteCategory = (NoteCategory)categoryComboBox.SelectedItem;
-            Note.Category = selectedNoteCategory;
+            Note.Category = (NoteCategory)categoryComboBox.SelectedItem;
             Note.EditingTime = DateTime.Now;
             
             //Сериализация
@@ -54,6 +52,7 @@ namespace NoteAppUI
             
             //Десериализация
             Project deserializatedProject = ProjectManager.LoadFromFile(ProjectManager.folderPath);
+            
             attantionLabel.Text = "Saved!";
         }
     }

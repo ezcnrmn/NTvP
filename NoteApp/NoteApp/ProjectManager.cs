@@ -28,8 +28,6 @@ namespace NoteApp
         /// <summary>
         /// Сериализация данных
         /// </summary>
-        /// <param name="project">Проект</param>
-        /// <param name="folderPath">Путь до папки сохранения</param>
         public static void SaveToFile(Project project, string folderPath)
         {
             if (!Directory.Exists(folderPath))
@@ -57,7 +55,9 @@ namespace NoteApp
             {
                 using (StreamReader sr = new StreamReader(folderPath))
                 using (JsonTextReader reader = new JsonTextReader(sr))
+                {
                     project = (Project)serializer.Deserialize<Project>(reader);
+                }
             }
             catch
             {

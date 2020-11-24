@@ -118,17 +118,14 @@ namespace NoteApp
         /// <summary>
         /// Метод клонирования
         /// </summary>
-        ///<returns>
-        /// Возвращает копию объекта класса Note
-        /// </returns>
         public object Clone()
         {
             return new Note
             {
-                Name = this.Name,
-                Content = this.Content,
-                EditingTime = this.EditingTime,
-                Category = this.Category
+                Name = Name,
+                Content = Content,
+                EditingTime = EditingTime,
+                Category = Category
             };
         }
     }
