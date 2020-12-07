@@ -30,7 +30,7 @@ namespace NoteApp
         /// <summary>
         /// Время создания заметки
         /// </summary>
-        private readonly DateTime _creationTime = DateTime.Now;
+        private DateTime _creationTime = DateTime.Now;
 
         /// <summary>
         /// Время последнего изменения заметки
@@ -44,12 +44,15 @@ namespace NoteApp
         /// </summary>
         public string Name
         {
-            get { return _name; }
+            get
+            {
+                return _name;
+            }
             set
             {
                 if (value.Length > 50)
                 {
-                    throw new ArgumentException("Название ограничено 50 символами");
+                    throw new ArgumentException("Name is limited to 50 characters!");
                 }
                 else
                 {
@@ -61,7 +64,6 @@ namespace NoteApp
                     {
                         _name = "Untitled";
                     }
-                    EditingTime = DateTime.Now;
                 }
             }
         }
@@ -72,11 +74,13 @@ namespace NoteApp
         /// </summary>
         public NoteCategory Category
         {
-            get { return _category; }
+            get
+            {
+                return _category;
+            }
             set
             {
                 _category = value;
-                EditingTime = DateTime.Now;
             }
         }
 
@@ -86,11 +90,13 @@ namespace NoteApp
         /// </summary>
         public string Content
         {
-            get { return _content; }
+            get
+            {
+                return _content;
+            }
             set
             {
                 _content = value;
-                EditingTime = DateTime.Now;
             }
         }
 
@@ -100,7 +106,14 @@ namespace NoteApp
         /// </summary>
         public DateTime CreationTime
         {
-            get { return _creationTime; }
+            get
+            {
+                return _creationTime;
+            }
+            set
+            {
+                _creationTime = value;
+            }
         }
 
         /// <summary>
@@ -108,10 +121,13 @@ namespace NoteApp
         /// </summary>
         public DateTime EditingTime
         {
-            get { return _editingTime; }
+            get
+            {
+                return _editingTime;
+            }
             set
             {
-                _editingTime = DateTime.Now;
+                _editingTime = value;
             }
         }
 

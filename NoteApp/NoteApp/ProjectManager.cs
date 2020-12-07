@@ -23,7 +23,7 @@ namespace NoteApp
         /// <summary>
         /// Путь до папки сохранения
         /// </summary>
-        public static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/NoteApp/";
+        public static string folderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "/NoteApp/";
 
         /// <summary>
         /// Сериализация данных
@@ -48,12 +48,16 @@ namespace NoteApp
         /// </summary>
         public static Project LoadFromFile(string folderPath)
         {
-            Project project = null;
+            Project project;
+            if(!File.Exists(folderPath + fileName))
+            {
+                return new Project();
+            }
             JsonSerializer serializer = new JsonSerializer();
 
             try
             {
-                using (StreamReader sr = new StreamReader(folderPath))
+                using (StreamReader sr = new StreamReader(folderPath + fileName))
                 using (JsonTextReader reader = new JsonTextReader(sr))
                 {
                     project = (Project)serializer.Deserialize<Project>(reader);
