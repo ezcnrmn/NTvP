@@ -40,8 +40,8 @@ namespace NoteAppUI
             var dialogResult = newNote.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                _project.Notes.Add(newNote.tempNote);
-                NotesListBox.Items.Add(newNote.tempNote.Name);
+                _project.Notes.Add(newNote.newNote);
+                NotesListBox.Items.Add(newNote.newNote.Name);
                 ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
             }
         }
@@ -55,14 +55,14 @@ namespace NoteAppUI
             {
                 var selectedIndex = NotesListBox.SelectedIndex;
                 var selectedNote = _project.Notes[selectedIndex];
-                var editedNote = new AddAndEditForm {tempNote = selectedNote};
+                var editedNote = new AddAndEditForm {newNote = selectedNote};
                 var dialogResult = editedNote.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
                     _project.Notes.RemoveAt(selectedIndex);
                     NotesListBox.Items.RemoveAt(selectedIndex);
-                    _project.Notes.Insert(selectedIndex, editedNote.tempNote);
-                    NotesListBox.Items.Insert(selectedIndex, editedNote.tempNote.Name);
+                    _project.Notes.Insert(selectedIndex, editedNote.newNote);
+                    NotesListBox.Items.Insert(selectedIndex, editedNote.newNote.Name);
                     NotesListBox.SelectedIndex = selectedIndex;
                     ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
                 }

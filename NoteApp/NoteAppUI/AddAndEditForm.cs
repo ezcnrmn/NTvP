@@ -12,7 +12,7 @@ using NoteApp;
 namespace NoteAppUI
 {
     /// <summary>
-    /// Класс добавления и редактирования заметки.
+    /// Класс AddAndEditForm.
     /// </summary>
     public partial class AddAndEditForm : Form
     {
@@ -30,7 +30,7 @@ namespace NoteAppUI
         /// <summary>
         /// Временная заметка
         /// </summary>
-        public Note tempNote
+        public Note newNote
         {
             get
             {
@@ -70,11 +70,11 @@ namespace NoteAppUI
         {
             try
             {
-                tempNote.Name = NameTextBox.Text;
-                tempNote.Content = ContentTextBox.Text;
-                tempNote.Category = (NoteCategory)CategoryComboBox.SelectedItem;
-                tempNote.EditingTime = DateTime.Now;
-                tempNote.CreationTime = CreatedTimePicker.Value;
+                newNote.Name = NameTextBox.Text;
+                newNote.Content = ContentTextBox.Text;
+                newNote.Category = (NoteCategory)CategoryComboBox.SelectedItem;
+                newNote.EditingTime = DateTime.Now;
+                newNote.CreationTime = CreatedTimePicker.Value;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception e)
