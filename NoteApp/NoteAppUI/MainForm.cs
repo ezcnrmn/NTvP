@@ -36,14 +36,16 @@ namespace NoteAppUI
         /// </summary>
         private void AddNote()
         {
-            var newNote = new AddAndEditForm();
+            var newNote = new NoteForm();
             var dialogResult = newNote.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
-                _project.Notes.Add(newNote.newNote);
-                NotesListBox.Items.Add(newNote.newNote.Name);
+                _project.Notes.Add(newNote.Note);
+                NotesListBox.Items.Add(newNote.Note.Name);
                 ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
             }
+
+            NotesListBox.SelectedIndex = NotesListBox.Items.Count - 1; 
         }
 
         /// <summary>
@@ -55,14 +57,14 @@ namespace NoteAppUI
             {
                 var selectedIndex = NotesListBox.SelectedIndex;
                 var selectedNote = _project.Notes[selectedIndex];
-                var editedNote = new AddAndEditForm {newNote = selectedNote};
+                var editedNote = new NoteForm {Note = selectedNote};
                 var dialogResult = editedNote.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
                     _project.Notes.RemoveAt(selectedIndex);
                     NotesListBox.Items.RemoveAt(selectedIndex);
-                    _project.Notes.Insert(selectedIndex, editedNote.newNote);
-                    NotesListBox.Items.Insert(selectedIndex, editedNote.newNote.Name);
+                    _project.Notes.Insert(selectedIndex, editedNote.Note);
+                    NotesListBox.Items.Insert(selectedIndex, editedNote.Note.Name);
                     NotesListBox.SelectedIndex = selectedIndex;
                     ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
                 }
@@ -76,7 +78,7 @@ namespace NoteAppUI
         {
             if (NotesListBox.SelectedIndex != -1)
             {
-                var resultMessage = MessageBox.Show("«Do you really want to remove " + _project.Notes[NotesListBox.SelectedIndex].Name + " note?",
+                var resultMessage = MessageBox.Show("«Do you really want to delete " + _project.Notes[NotesListBox.SelectedIndex].Name + " note?",
                     "Delete?", MessageBoxButtons.OKCancel);
                 if (resultMessage == DialogResult.OK)
                 {
@@ -143,11 +145,6 @@ namespace NoteAppUI
             EditNote();
         }
 
-        private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DeleteNote();
-        }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddNote();
@@ -194,6 +191,11 @@ namespace NoteAppUI
         private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
         {
             ShowAboutForm();
+        }
+
+        private void DeleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteNote();
         }
     }
 }

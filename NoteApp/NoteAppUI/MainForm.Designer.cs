@@ -38,7 +38,7 @@
             this.EditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EditNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RemoveNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SplitContainer = new System.Windows.Forms.SplitContainer();
@@ -122,7 +122,7 @@
             this.EditToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddNoteToolStripMenuItem,
             this.EditNoteToolStripMenuItem,
-            this.RemoveNoteToolStripMenuItem});
+            this.DeleteNoteToolStripMenuItem});
             this.EditToolStripMenuItem.Name = "EditToolStripMenuItem";
             this.EditToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.EditToolStripMenuItem.Text = "Edit";
@@ -130,23 +130,23 @@
             // AddNoteToolStripMenuItem
             // 
             this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
-            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddNoteToolStripMenuItem.Text = "Add Note";
             this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.AddNoteToolStripMenuItem_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.EditNoteToolStripMenuItem.Text = "Edit Note";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditNoteToolStripMenuItem_Click);
             // 
-            // RemoveNoteToolStripMenuItem
+            // DeleteNoteToolStripMenuItem
             // 
-            this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
-            this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.RemoveNoteToolStripMenuItem_Click);
+            this.DeleteNoteToolStripMenuItem.Name = "DeleteNoteToolStripMenuItem";
+            this.DeleteNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteNoteToolStripMenuItem.Text = "Delete Note";
+            this.DeleteNoteToolStripMenuItem.Click += new System.EventHandler(this.DeleteNoteToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -199,7 +199,8 @@
             // DeleteButton
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.DeleteButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.DeleteButton.FlatAppearance.BorderSize = 0;
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
             this.DeleteButton.Location = new System.Drawing.Point(84, 461);
@@ -212,7 +213,8 @@
             // EditButton
             // 
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.EditButton.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.EditButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.EditButton.FlatAppearance.BorderSize = 0;
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
             this.EditButton.Location = new System.Drawing.Point(48, 461);
@@ -225,7 +227,8 @@
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.AddButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.AddButton.FlatAppearance.BorderSize = 0;
             this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Image = ((System.Drawing.Image)(resources.GetObject("AddButton.Image")));
             this.AddButton.Location = new System.Drawing.Point(12, 461);
@@ -342,7 +345,7 @@
         private System.Windows.Forms.ToolStripMenuItem EditToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem EditNoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem RemoveNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DeleteNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
         private System.Windows.Forms.SplitContainer SplitContainer;

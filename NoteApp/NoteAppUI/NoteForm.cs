@@ -14,9 +14,9 @@ namespace NoteAppUI
     /// <summary>
     /// Класс AddAndEditForm.
     /// </summary>
-    public partial class AddAndEditForm : Form
+    public partial class NoteForm : Form
     {
-        public AddAndEditForm()
+        public NoteForm()
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
@@ -30,7 +30,7 @@ namespace NoteAppUI
         /// <summary>
         /// Временная заметка
         /// </summary>
-        public Note newNote
+        public Note Note
         {
             get
             {
@@ -70,11 +70,11 @@ namespace NoteAppUI
         {
             try
             {
-                newNote.Name = NameTextBox.Text;
-                newNote.Content = ContentTextBox.Text;
-                newNote.Category = (NoteCategory)CategoryComboBox.SelectedItem;
-                newNote.EditingTime = DateTime.Now;
-                newNote.CreationTime = CreatedTimePicker.Value;
+                Note.Name = NameTextBox.Text;
+                Note.Content = ContentTextBox.Text;
+                Note.Category = (NoteCategory)CategoryComboBox.SelectedItem;
+                Note.EditingTime = DateTime.Now;
+                Note.CreationTime = CreatedTimePicker.Value;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception e)
