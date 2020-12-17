@@ -130,21 +130,21 @@
             // AddNoteToolStripMenuItem
             // 
             this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
-            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.AddNoteToolStripMenuItem.Text = "Add Note";
             this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.AddNoteToolStripMenuItem_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.EditNoteToolStripMenuItem.Text = "Edit Note";
             this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditNoteToolStripMenuItem_Click);
             // 
             // DeleteNoteToolStripMenuItem
             // 
             this.DeleteNoteToolStripMenuItem.Name = "DeleteNoteToolStripMenuItem";
-            this.DeleteNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DeleteNoteToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.DeleteNoteToolStripMenuItem.Text = "Delete Note";
             this.DeleteNoteToolStripMenuItem.Click += new System.EventHandler(this.DeleteNoteToolStripMenuItem_Click);
             // 
@@ -270,6 +270,7 @@
             // 
             // EditedTimePicker
             // 
+            this.EditedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
             this.EditedTimePicker.Enabled = false;
             this.EditedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.EditedTimePicker.Location = new System.Drawing.Point(248, 56);
@@ -299,6 +300,7 @@
             // 
             // CreatedTimePicker
             // 
+            this.CreatedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
             this.CreatedTimePicker.Enabled = false;
             this.CreatedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.CreatedTimePicker.Location = new System.Drawing.Point(56, 56);

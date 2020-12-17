@@ -21,8 +21,6 @@ namespace NoteAppUI
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
             CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            CreatedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
-            EditedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
             HideFormContent();
         }
 

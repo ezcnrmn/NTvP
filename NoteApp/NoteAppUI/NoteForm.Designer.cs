@@ -62,6 +62,7 @@
             // 
             // EditedTimePicker
             // 
+            this.EditedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
             this.EditedTimePicker.Enabled = false;
             this.EditedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.EditedTimePicker.Location = new System.Drawing.Point(260, 59);
@@ -95,6 +96,7 @@
             // 
             // CreatedTimePicker
             // 
+            this.CreatedTimePicker.CustomFormat = "HH:mm  dd.MM.yyyy";
             this.CreatedTimePicker.Enabled = false;
             this.CreatedTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.CreatedTimePicker.Location = new System.Drawing.Point(67, 59);
@@ -151,7 +153,7 @@
             this.CancelButton1.UseVisualStyleBackColor = false;
             this.CancelButton1.Click += new System.EventHandler(this.CancelButton1_Click);
             // 
-            // AddAndEditForm
+            // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -169,7 +171,7 @@
             this.Controls.Add(this.NameLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(500, 300);
-            this.Name = "AddAndEditForm";
+            this.Name = "NoteForm";
             this.ShowIcon = false;
             this.Text = "Add/Edit Note";
             this.ResumeLayout(false);
