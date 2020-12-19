@@ -40,7 +40,6 @@ namespace NoteApp
         /// <summary>
         /// Свойство названия заметки
         /// Проверяется длина названия не более 50 символов и устанавливается значение при пустом названии
-        /// Меняется время последнего изменения
         /// </summary>
         public string Name
         {
@@ -70,7 +69,6 @@ namespace NoteApp
 
         /// <summary>
         /// Свойство категории заметки
-        /// При изменении категории меняется время последнего изменения
         /// </summary>
         public NoteCategory Category
         {
@@ -86,7 +84,6 @@ namespace NoteApp
 
         /// <summary>
         /// Свойство содержания заметки
-        /// При изменении содержания меняется время последнего изменения
         /// </summary>
         public string Content
         {
@@ -102,7 +99,6 @@ namespace NoteApp
 
         /// <summary>
         /// Свойство времени создания заметки
-        /// Время создания не модифицируется
         /// </summary>
         public DateTime CreationTime
         {
@@ -141,6 +137,7 @@ namespace NoteApp
                 Name = Name,
                 Content = Content,
                 EditingTime = EditingTime,
+                CreationTime = CreationTime,
                 Category = Category
             };
         }

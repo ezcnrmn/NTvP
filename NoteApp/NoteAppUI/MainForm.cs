@@ -40,7 +40,7 @@ namespace NoteAppUI
             {
                 _project.Notes.Add(newNote.Note);
                 NotesListBox.Items.Add(newNote.Note.Name);
-                ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
+                ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
             }
 
             NotesListBox.SelectedIndex = NotesListBox.Items.Count - 1; 
@@ -64,7 +64,7 @@ namespace NoteAppUI
                     _project.Notes.Insert(selectedIndex, editedNote.Note);
                     NotesListBox.Items.Insert(selectedIndex, editedNote.Note.Name);
                     NotesListBox.SelectedIndex = selectedIndex;
-                    ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
+                    ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace NoteAppUI
                 {
                     _project.Notes.RemoveAt(NotesListBox.SelectedIndex);
                     NotesListBox.Items.RemoveAt(NotesListBox.SelectedIndex);
-                    ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
+                    ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
 
                     HideFormContent();
                 }
@@ -160,7 +160,7 @@ namespace NoteAppUI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _project = ProjectManager.LoadFromFile(ProjectManager.folderPath);
+            _project = ProjectManager.LoadFromFile(ProjectManager.filePath);
             foreach (var notes in _project.Notes)
             {
                 NotesListBox.Items.Add(notes.Name);
@@ -169,7 +169,7 @@ namespace NoteAppUI
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            ProjectManager.SaveToFile(_project, ProjectManager.folderPath);
+            ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
         }
 
         private void NotesListBox_SelectedIndexChanged(object sender, EventArgs e)
