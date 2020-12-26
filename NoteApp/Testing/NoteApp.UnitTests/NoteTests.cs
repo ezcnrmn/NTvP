@@ -8,6 +8,15 @@ namespace NoteApp.UnitTests
     [TestFixture]
     public class NoteTests
     {
+        private void NotesAreEqual(Note note1, Note note2)
+        {
+            Assert.AreEqual(note1.Name, note2.Name);
+            Assert.AreEqual(note1.Content, note2.Content);
+            Assert.AreEqual(note1.CreationTime, note2.CreationTime);
+            Assert.AreEqual(note1.EditingTime, note2.EditingTime);
+            Assert.AreEqual(note1.Category, note2.Category);
+        }
+        
         [Test]
         public void Name_EmptyName_ReturnsDefaultName()
         {
@@ -121,7 +130,7 @@ namespace NoteApp.UnitTests
             //Assert
             Assert.AreEqual(expectedCreationTime, actualCreationTime);
         }
-
+        
         [Test]
         public void Clone_CorrectNote_ReturnsSameNote()
         {
@@ -137,11 +146,9 @@ namespace NoteApp.UnitTests
 
             //Act
             var actualNote = expectedNote.Clone() as Note;
-            var expectedResult = JsonConvert.SerializeObject(expectedNote);
-            var actualResult = JsonConvert.SerializeObject(actualNote);
 
             //Assert
-            Assert.AreEqual(expectedResult, actualResult);
+            NotesAreEqual(expectedNote, expectedNote);
         }
     }
 }

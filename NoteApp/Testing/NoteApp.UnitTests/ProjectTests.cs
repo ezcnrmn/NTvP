@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using NUnit.Framework;
 using Assert = NUnit.Framework.Assert;
 
 namespace NoteApp.UnitTests
 {
     [TestFixture]
-    class ProjectTests
+    public class ProjectTests
     {
        [Test]
         public void Project_CreateProject_ReturnsNotNullResult()

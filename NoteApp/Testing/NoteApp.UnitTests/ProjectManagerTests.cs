@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 namespace NoteApp.UnitTests
 {
     [TestFixture]
-    class ProjectManagerTests
+    public class ProjectManagerTests
     {
-        public Project PrepareProject()
+        private Project PrepareProject()
         {
             var sourceProject = new Project();
             sourceProject.Notes.Add(new Note()
@@ -32,14 +32,29 @@ namespace NoteApp.UnitTests
             return sourceProject;
         }
 
+        private string TestDataFolderPath()
+        {
+            var location = Assembly.GetExecutingAssembly().Location;
+            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            return testDataFolder;
+        }
+
+        private void NotesAreEqual(Note note1, Note note2)
+        {
+            Assert.AreEqual(note1.Name, note2.Name);
+            Assert.AreEqual(note1.Content, note2.Content);
+            Assert.AreEqual(note1.CreationTime, note2.CreationTime);
+            Assert.AreEqual(note1.EditingTime, note2.EditingTime);
+            Assert.AreEqual(note1.Category, note2.Category);
+        }
+
         [Test]
         public void SaveToFile_CorrectProject_FileSavedCorrectly()
         {
             //Setup
             var sourceProject = PrepareProject();
 
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = TestDataFolderPath();
             var actualFileName = testDataFolder + @"\actualProject.json";
             var expectedFileName = testDataFolder + @"\expectedProject.json";
 
@@ -63,19 +78,14 @@ namespace NoteApp.UnitTests
             //Setup
             var sourceProject = PrepareProject();
 
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
-            var actualFilePath = testDataFolder + @"\CreationFolderTest";
+            var testDataFolder = TestDataFolderPath();
+            var actualFilePath = testDataFolder + @"\OutputTestFolder";
             var actualFileName = actualFilePath + @"\actualProject.json";
             var expectedFileName = testDataFolder + @"\expectedProject.json";
 
             if (Directory.Exists(actualFilePath))
             {
-                if (File.Exists(actualFileName))
-                {
-                    File.Delete(actualFileName);
-                }
-                Directory.Delete(actualFilePath);
+                Directory.Delete(actualFilePath, true);
             }
 
             //Act
@@ -93,17 +103,24 @@ namespace NoteApp.UnitTests
             //Setup
             var sourceProject = PrepareProject();
 
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = TestDataFolderPath();
             var expectedFileName = testDataFolder + @"\expectedProject.json";
 
             //Act
             var actualProject = ProjectManager.LoadFromFile(expectedFileName);
 
             //Assert
-            var expectedData = JsonConvert.SerializeObject(sourceProject);
-            var actualData = JsonConvert.SerializeObject(actualProject);
-            Assert.AreEqual(expectedData, actualData);
+            if (sourceProject.Notes.Count == actualProject.Notes.Count)
+            {
+                for (int i = 0; i < sourceProject.Notes.Count; i++)
+                {
+                    NotesAreEqual(sourceProject.Notes[i], actualProject.Notes[i]);
+                }
+            }
+            else
+            {
+                Assert.Fail("Amount of sourceProject notes is not equal to actualProject notes");
+            }
         }
 
         [Test]
@@ -112,17 +129,24 @@ namespace NoteApp.UnitTests
             //Setup
             var sourceProject = new Project();
 
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = TestDataFolderPath();
             var nonexistentFileName = testDataFolder + @"\NonexistentProject.json";
 
             //Act
             var actualProject = ProjectManager.LoadFromFile(nonexistentFileName);
 
             //Assert
-            var expectedData = JsonConvert.SerializeObject(sourceProject);
-            var actualData = JsonConvert.SerializeObject(actualProject);
-            Assert.AreEqual(expectedData, actualData);
+            if (sourceProject.Notes.Count == actualProject.Notes.Count)
+            {
+                for (int i = 0; i < sourceProject.Notes.Count; i++)
+                {
+                    NotesAreEqual(sourceProject.Notes[i], actualProject.Notes[i]);
+                }
+            }
+            else
+            {
+                Assert.Fail("Amount of sourceProject notes is not equal to actualProject notes");
+            }
         }
 
         [Test]
@@ -131,17 +155,24 @@ namespace NoteApp.UnitTests
             //Setup
             var sourceProject = new Project();
 
-            var location = Assembly.GetExecutingAssembly().Location;
-            var testDataFolder = Path.GetDirectoryName(location) + @"\TestData";
+            var testDataFolder = TestDataFolderPath();
             var incorrectFileName = testDataFolder + @"\incorrectProject.json";
 
             //Act
             var actualProject = ProjectManager.LoadFromFile(incorrectFileName);
 
             //Assert
-            var expectedData = JsonConvert.SerializeObject(sourceProject);
-            var actualData = JsonConvert.SerializeObject(actualProject);
-            Assert.AreEqual(expectedData, actualData);
+            if (sourceProject.Notes.Count == actualProject.Notes.Count)
+            {
+                for (int i = 0; i < sourceProject.Notes.Count; i++)
+                {
+                    NotesAreEqual(sourceProject.Notes[i], actualProject.Notes[i]);
+                }
+            }
+            else
+            {
+                Assert.Fail("Amount of sourceProject notes is not equal to actualProject notes");
+            }
         }
     }
 }

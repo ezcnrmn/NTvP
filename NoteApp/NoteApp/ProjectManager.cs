@@ -42,9 +42,11 @@ namespace NoteApp
             JsonSerializer serializer = new JsonSerializer();
 
             using (StreamWriter sw = new StreamWriter(filePath))
-            using (JsonTextWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, project);
+                using (JsonTextWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, project);
+                }
             }
         }
 
@@ -63,9 +65,11 @@ namespace NoteApp
             try
             {
                 using (StreamReader sr = new StreamReader(filePath))
-                using (JsonTextReader reader = new JsonTextReader(sr))
                 {
-                    project = (Project)serializer.Deserialize<Project>(reader);
+                    using (JsonTextReader reader = new JsonTextReader(sr))
+                    {
+                        project = (Project) serializer.Deserialize<Project>(reader);
+                    }
                 }
             }
             catch
