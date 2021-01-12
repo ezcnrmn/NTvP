@@ -20,9 +20,11 @@ namespace NoteAppUI
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
-            CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
+        /// <summary>
+        /// Заметка
+        /// </summary>
         private Note _note = new Note();
 
         /// <summary>

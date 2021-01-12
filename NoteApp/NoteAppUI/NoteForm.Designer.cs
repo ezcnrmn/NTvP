@@ -106,10 +106,11 @@
             // 
             // CategoryComboBox
             // 
+            this.CategoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(67, 32);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(103, 21);
+            this.CategoryComboBox.Size = new System.Drawing.Size(127, 21);
             this.CategoryComboBox.TabIndex = 14;
             // 
             // CategoryLabel
