@@ -22,8 +22,8 @@ namespace NoteAppUI
             
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.Items.AddRange(Enum.GetNames(typeof(NoteApp.NoteCategory)));
-            _notesList = _project.Notes;
-            _notesList = _project.SortingNotes(_notesList);
+            _notes = _project.Notes;
+            _notes = _project.SortingNotes(_notes);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace NoteAppUI
         /// <summary>
         /// Список отображаемых в NoteListBox заметок
         /// </summary>
-        private List<Note> _notesList = new List<Note>();
+        private List<Note> _notes = new List<Note>();
 
         /// <summary>
         /// Метод обновления списка заметок
@@ -43,16 +43,16 @@ namespace NoteAppUI
         {
             if (CategoryComboBox.SelectedIndex > 0)
             {
-                _notesList = _project.SortingNotes(_project.Notes, (NoteCategory)CategoryComboBox.SelectedIndex-1);
+                _notes = _project.SortingNotes(_project.Notes, (NoteCategory)CategoryComboBox.SelectedIndex-1);
             }
             else
             {
-                _notesList = _project.SortingNotes(_project.Notes);
+                _notes = _project.SortingNotes(_project.Notes);
             }
 
             NotesListBox.Items.Clear();
 
-            foreach (var note in _notesList)
+            foreach (var note in _notes)
             {
                 NotesListBox.Items.Add(note.Name);
             }
@@ -87,7 +87,7 @@ namespace NoteAppUI
             if (dialogResult == DialogResult.OK)
             {
                 _project.Notes.Add(newNote.Note);
-                _notesList.Add(newNote.Note);
+                _notes.Add(newNote.Note);
                 NotesListBox.Items.Add(newNote.Note.Name);
 
                 if (CategoryComboBox.SelectedIndex > 0)
@@ -110,7 +110,7 @@ namespace NoteAppUI
             if (NotesListBox.SelectedIndex != -1)
             {
                 int selectedIndex = NotesListBox.SelectedIndex;
-                var selectedNote = _notesList[selectedIndex];
+                var selectedNote = _notes[selectedIndex];
                 var editedNote = new NoteForm { Note = selectedNote };
                 var dialogResult = editedNote.ShowDialog();
                 if (dialogResult == DialogResult.OK)
@@ -139,11 +139,11 @@ namespace NoteAppUI
         {
             if (NotesListBox.SelectedIndex != -1)
             {
-                var resultMessage = MessageBox.Show("Do you really want to delete «" + _notesList[NotesListBox.SelectedIndex].Name + "» note?",
+                var resultMessage = MessageBox.Show("Do you really want to delete «" + _notes[NotesListBox.SelectedIndex].Name + "» note?",
                     "Delete?", MessageBoxButtons.OKCancel);
                 if (resultMessage == DialogResult.OK)
                 {
-                    var selectedNote = _notesList[NotesListBox.SelectedIndex];
+                    var selectedNote = _notes[NotesListBox.SelectedIndex];
                     int projectSelectedIndex = _project.Notes.IndexOf(selectedNote);
                     _project.Notes.RemoveAt(projectSelectedIndex);
 
@@ -261,9 +261,9 @@ namespace NoteAppUI
         {
             if (CategoryComboBox.SelectedIndex > 0 && NotesListBox.SelectedIndex >= 0)
             {
-                var selectedNote = _notesList[NotesListBox.SelectedIndex];
-                _notesList = _project.SortingNotes(_project.Notes);
-                int projectSelectedIndex = _notesList.IndexOf(selectedNote);
+                var selectedNote = _notes[NotesListBox.SelectedIndex];
+                _notes = _project.SortingNotes(_project.Notes);
+                int projectSelectedIndex = _notes.IndexOf(selectedNote);
                 AssignCurrentIndex(projectSelectedIndex);
             }
             
@@ -274,11 +274,11 @@ namespace NoteAppUI
         {
             if (NotesListBox.SelectedIndex >= 0)
             {
-                NameLabel.Text = _notesList[NotesListBox.SelectedIndex].Name;
-                ContentTextBox.Text = _notesList[NotesListBox.SelectedIndex].Content;
-                CreatedTimePicker.Value = _notesList[NotesListBox.SelectedIndex].CreationTime;
-                EditedTimePicker.Value = _notesList[NotesListBox.SelectedIndex].EditingTime;
-                CategoryLabel.Text = "Category: " + _notesList[NotesListBox.SelectedIndex].Category;
+                NameLabel.Text = _notes[NotesListBox.SelectedIndex].Name;
+                ContentTextBox.Text = _notes[NotesListBox.SelectedIndex].Content;
+                CreatedTimePicker.Value = _notes[NotesListBox.SelectedIndex].CreationTime;
+                EditedTimePicker.Value = _notes[NotesListBox.SelectedIndex].EditingTime;
+                CategoryLabel.Text = "Category: " + _notes[NotesListBox.SelectedIndex].Category;
 
                 AssignCurrentIndex();
             }
