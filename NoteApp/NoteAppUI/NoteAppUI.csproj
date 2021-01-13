@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon_256x256.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -119,5 +123,29 @@
   <ItemGroup>
     <None Include="Resources\edit_32x32.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_256x256.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="a_pen_256x256.ico" />
+    <Content Include="icon_256x256.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>md "$(SolutionDir)Installer\InstallScripts"
+
+md "$(SolutionDir)Installer\InstallScripts\Release"
+
+md "$(SolutionDir)Installer\InstallScripts\Installers"
+
+xcopy "$(ProjectDir)$(OutDir)*.dll" "$(SolutionDir)Installer\InstallScripts\Release\"
+
+xcopy "$(ProjectDir)$(OutDir)*.exe" "$(SolutionDir)Installer\InstallScripts\Release\"
+ren "$(SolutionDir)Installer\InstallScripts\Release\NoteAppUI.exe" NoteApp.exe</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>rd /s /q "$(SolutionDir)Installer\InstallScripts\Release"
+
+rd /s /q "$(SolutionDir)Installer\InstallScripts\Installers"</PreBuildEvent>
+  </PropertyGroup>
 </Project>
