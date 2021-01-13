@@ -126,10 +126,6 @@
   <ItemGroup>
     <None Include="Resources\icon_256x256.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="a_pen_256x256.ico" />
-    <Content Include="icon_256x256.ico" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>md "$(SolutionDir)Installer\InstallScripts"
