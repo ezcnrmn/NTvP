@@ -20,6 +20,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(NoteCategory));
+            KeyPreview = true;
         }
 
         /// <summary>
@@ -91,6 +92,15 @@ namespace NoteAppUI
         private void NameTextBox_Leave(object sender, EventArgs e)
         {
             NameTextBox.BackColor = Color.White;
+        }
+
+        private void NoteForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                NewNote();
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

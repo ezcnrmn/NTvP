@@ -18,6 +18,7 @@ namespace NoteAppUI
         public AboutForm()
         {
             InitializeComponent();
+            KeyPreview = true;
         }
 
         private void GitHubLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -28,6 +29,20 @@ namespace NoteAppUI
         private void EmailLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText("leonid.volkov99@gmail.com");
+        }
+
+        private void AboutForm_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            Close();
+        }
+
+        private void AboutForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

@@ -121,7 +121,10 @@
             this.MinimumSize = new System.Drawing.Size(391, 262);
             this.Name = "AboutForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.AboutForm_HelpRequested);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AboutForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

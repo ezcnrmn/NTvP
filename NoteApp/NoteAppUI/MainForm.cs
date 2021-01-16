@@ -83,6 +83,7 @@ namespace NoteAppUI
         {
             ShowFormContent();
             var newNote = new NoteForm();
+            this.Hide();
             var dialogResult = newNote.ShowDialog();
             if (dialogResult == DialogResult.OK)
             {
@@ -100,6 +101,7 @@ namespace NoteAppUI
                 NotesListBox.SelectedIndex = 0;
                 ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
             }
+            this.Show();
         }
 
         /// <summary>
@@ -112,6 +114,7 @@ namespace NoteAppUI
                 int selectedIndex = NotesListBox.SelectedIndex;
                 var selectedNote = _notes[selectedIndex];
                 var editedNote = new NoteForm { Note = selectedNote };
+                this.Hide();
                 var dialogResult = editedNote.ShowDialog();
                 if (dialogResult == DialogResult.OK)
                 {
@@ -124,11 +127,12 @@ namespace NoteAppUI
                         int categoryIndex = editedNote.Note.Category.GetHashCode() + 1;
                         CategoryComboBox.SelectedIndex = categoryIndex;
                     }
-
                     ListBoxUpdater();
                     NotesListBox.SelectedIndex = 0;
                     ProjectManager.SaveToFile(_project, ProjectManager.filePath, ProjectManager.folderPath);
+                    
                 }
+                this.Show();
             }
         }
 
@@ -283,12 +287,7 @@ namespace NoteAppUI
                 AssignCurrentIndex();
             }
         }
-
-        private void MainForm_HelpRequested(object sender, HelpEventArgs hlpevent)
-        {
-            ShowAboutForm();
-        }
-
+        
         private void DeleteNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DeleteNote();

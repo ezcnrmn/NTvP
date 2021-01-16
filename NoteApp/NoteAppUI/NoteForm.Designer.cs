@@ -146,6 +146,7 @@
             // 
             this.CancelButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton1.BackColor = System.Drawing.SystemColors.Control;
+            this.CancelButton1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CancelButton1.Location = new System.Drawing.Point(520, 429);
             this.CancelButton1.Name = "CancelButton1";
             this.CancelButton1.Size = new System.Drawing.Size(70, 25);
@@ -158,6 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelButton1;
             this.ClientSize = new System.Drawing.Size(602, 466);
             this.Controls.Add(this.CancelButton1);
             this.Controls.Add(this.EditedLabel);
@@ -174,7 +176,9 @@
             this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "NoteForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add/Edit Note";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
